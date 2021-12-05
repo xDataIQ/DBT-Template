@@ -1,12 +1,19 @@
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![dbt logo and version](https://img.shields.io/static/v1?logo=dbt&label=dbt-version&message=0.20.x&color=orange)
 
-# {{ organization_name }} Analytics
-
-# Salesforce ([docs](https://dbt-salesforce.netlify.app/))
+# {{ Package Name }}
 
 This package models Salesforce data from [Fivetran's connector](https://fivetran.com/docs/applications/salesforce). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1fB6aCiX_C1lieJf55TbS2v1yv9sp-AHNNAh2x7jnJ48/edit#slide=id.g3cb9b617d1_0_237).
 
 The main focus of this package is enable users to better understand the performance of your opportunities. You can easily understand what is going on in your sales funnel and dig into how the members of your sales team are performing.
+
+## Data Stack
+
+- Loader: {{ your_data_loading_tools }}
+- Warehouse: {{ your_warehouse }}
+- Transformation: dbt
+- Business Intelligence: {{ your_bi_tool }}
+
+This package has been tested on BigQuery, Snowflake and Redshift.
 
 ## Models
 
@@ -72,10 +79,6 @@ Additional contributions to this package are very welcome! Please create issues
 or open PRs against `main`. Check out
 [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657)
 on the best workflow for contributing to a package.
-
-## Database support
-
-This package has been tested on BigQuery, Snowflake and Redshift.
 
 ## Using This Project
 
