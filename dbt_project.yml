@@ -1,0 +1,69 @@
+
+# Name of the project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect organization's
+# name or the intended use of these models
+name: 'salesforce_dataiq'
+version: '1.0.0'
+config-version: 2
+
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dataiq'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
+
+on-run-end: 
+  - "{{ report_metrics() }}"
+
+
+
+seeds:
+  salesforce_dataiq:
+    sales_data:
+      +schema: customer_data
+    billing_data:
+      +schema: sales_data
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+
+models:
+  salesforce_dataiq:
+    staging:
+      +tags:
+        - staging
+      +schema: staging
+      +materialized: table
+    dataiq:
+      +tags:
+        - dataiq
+      +schema: dataiq
+      +materialized: table
+
+vars:
+  salesforce:
+    account: "{{ ref('stg_salesforce__account') }}"
+    opportunity: "{{ ref('stg_salesforce__opportunity') }}"
+    user: "{{ ref('stg_salesforce__user') }}"
+    user_role: "{{ ref('stg_salesforce__user_role') }}"
+    opportunity_enhanced_pass_through_columns: []
+
+
