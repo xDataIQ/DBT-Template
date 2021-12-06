@@ -53,10 +53,8 @@ models:
       +schema: staging
       +materialized: table
     dataiq:
-      +tags:
-        - dataiq
-      +schema: dataiq
-      +materialized: table
+      schema: dataiq
+      materialized: table
 
 vars:
   salesforce:
