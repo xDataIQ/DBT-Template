@@ -1,0 +1,5 @@
+version: 2
+
+macros:
+  - name: null_negative_numbers
+    description: '{{ doc("null_negative_numbers") }}'
