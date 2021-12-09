@@ -1,0 +1,6 @@
+version: 2
+
+macros:
+  - name: average
+    description: '{{ doc("average") }}'
+
